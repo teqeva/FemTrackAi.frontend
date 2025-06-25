@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FemTrack AI - Doctor Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #fdf0fa, #eac7e6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 10px 30px rgba(199, 21, 133, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      color: #af2c72;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #91205d;
+    }
+
+    input, select, textarea {
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .form-buttons button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 48%;
+      margin-top: 10px;
+    }
+
+    .signup-btn {
+      background-color: #af2c72;
+      color: white;
+    }
+
+    .login-btn {
+      background-color: #fff0f5;
+      color: #af2c72;
+      border: 2px solid #af2c72;
+    }
+
+    .form-buttons button:hover {
+      opacity: 0.9;
+    }
+
+    .section-heading {
+      margin-top: 25px;
+      font-size: 16px;
+      color: #c71585;
+      font-weight: bold;
+    }
+
+    .toggle-message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .toggle-message a {
+      color: #af2c72;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="form-container">
+    <h2>👩‍⚕️ FemTrack AI - Doctor Signup</h2>
+
+    <form id="signup-form">
+      <label>Full Name</label>
+      <input type="text" required>
+
+      <label>Email</label>
+      <input type="email" required>
+
+      <label>Password</label>
+      <input type="password" required>
+
+      <label>Medical License Number</label>
+      <input type="text" required>
+
+      <label>Specialization</label>
+      <input type="text" placeholder="e.g. Gynecologist, Oncologist" required>
+
+      <label>Years of Experience</label>
+      <input type="number" min="0" required>
+
+      <label>Hospital/Clinic Affiliation</label>
+      <input type="text" placeholder="Facility name" required>
+
+      <label>Phone Number</label>
+      <input type="tel" placeholder="+254..." required>
+
+      <label>Location</label>
+      <input type="text" placeholder="City, Country" required>
+
+      <div class="form-buttons">
+        <button class="signup-btn" type="submit">Sign Up</button>
+        <button class="login-btn" type="button" onclick="toggleForm()">Already have an account? Login</button>
+      </div>
+    </form>
+
+    <form id="login-form" style="display:none;">
+      <label>Email</label>
+      <input type="email" required>
+
+      <label>Password</label>
+      <input type="password" required>
+
+      <div class="form-buttons">
+        <button class="login-btn" type="submit">Login</button>
+        <button class="signup-btn" type="button" onclick="toggleForm()">Back to Signup</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function toggleForm() {
+      const signupForm = document.getElementById('signup-form');
+      const loginForm = document.getElementById('login-form');
+      const heading = document.querySelector('h2');
+      if (signupForm.style.display === 'none') {
+        signupForm.style.display = 'block';
+        loginForm.style.display = 'none';
+        heading.textContent = "👩‍⚕️ FemTrack AI - Doctor Signup";
+      } else {
+        signupForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        heading.textContent = " FemTrack AI - Doctor Login";
+      }
+    }
+  </script>
+</body>
+</html>

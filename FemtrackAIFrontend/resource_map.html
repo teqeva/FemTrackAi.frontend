@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resource Map - FemTrack AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fdf0fa;
+      display: flex;
+    }
+ /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 80px;
+      background-color: #ffffff;
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: width 0.3s ease;
+      overflow-x: hidden;
+      z-index: 1000;
+    }
+
+    .sidebar:hover {
+      width: 220px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo-text {
+      margin-left: 10px;
+      font-weight: bold;
+      color: #af2c72;
+      font-size: 18px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar:hover .logo-text {
+      opacity: 1;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    .sidebar ul li a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #ffe4f2;
+      color: #af2c72;
+    }
+
+    .icon {
+      min-width: 24px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .text {
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar:hover .text {
+      opacity: 1;
+    }
+
+    .topbar {
+      position: fixed;
+      left: 80px;
+      right: 0;
+      height: 60px;
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 10;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar:hover ~ .topbar {
+      left: 220px;
+    }
+
+    .main-content {
+      margin-left: 80px;
+      margin-top: 60px;
+      padding: 40px 60px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar:hover ~ .main-content {
+      margin-left: 220px;
+    }
+
+    /* Topbar */
+    .topbar {
+      position: fixed;
+      left: 80px;
+      right: 0;
+      height: 60px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+    }
+
+    .topbar h1 {
+      font-size: 20px;
+      color: #c71585;
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar h1 span {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 80px;
+      margin-top: 60px;
+      padding: 30px 40px 60px;
+      flex: 1;
+    }
+
+    .map-section, .info-section {
+      flex: 1;
+      background: #fff;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 4px 20px rgba(199, 21, 133, 0.15);
+    }
+
+    .map-section {
+      min-height: 600px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 550px;
+      border: none;
+      border-radius: 16px;
+    }
+
+    .info-section h3 {
+      color: #c71585;
+      margin-top: 0;
+    }
+
+    .info-box {
+      margin-bottom: 20px;
+    }
+
+    .info-box h4 {
+      margin: 0 0 5px;
+      color: #d63384;
+    }
+
+    .info-box p {
+      margin: 0;
+      color: #555;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #ffe0f7;
+      color: #a30065;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin: 4px 4px 0 0;
+    }
+  </style>
+</head>
+<body>
+   <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo" class="logo-img" />
+      <span class="logo-text">FemTrack AI</span>
+    </div>
+    <ul>
+       <li><a href="dr_dashboard.html"><span class="icon">🏠</span> <span class="text">Dashboard</span></a></li>
+      <li><a href="patient_risks.html"><span class="icon">👥</span> <span class="text">Patient Risk</span></a></li>
+      <li><a href="clinical_support.html"><span class="icon">🧾</span> <span class="text">Decision Cards</span></a></li>
+      <li><a href="dr_action.html"><span class="icon">🧭</span> <span class="text">Action Items</span></a></li>
+      <li><a href="resource_map.html"><span class="icon">🗺</span> <span class="text">Resource Map</span></a></li>
+      <li><a href="dr_messages.html"><span class="icon">💬</span> <span class="text">Messages</span></a></li>
+      <li><a href="dr_settings.html"><span class="icon">⚙️</span> <span class="text">Settings</span></a></li>
+      <li><a href=""><span class="icon">🚪</span> <span class="text">Log Out</span></a></li>
+    </ul>
+  </div>
+
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <h1><span>🗺</span>Maps</h1>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="map-section">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.154326037264!2d36.8064934!3d-1.2920651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10dce10745ed%3A0x87c33c45033d8a4!2sNairobi%20Hospital!5e0!3m2!1sen!2ske!4v1719232480092!5m2!1sen!2ske" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="info-section">
+      <h3>Nearby Medical Resources</h3>
+      <div class="info-box">
+        <h4>Nairobi Women's Hospital</h4>
+        <p><strong>Hours:</strong> 24/7<br><strong>Phone:</strong> +254 712 345 678<br><strong>Services:</strong></p>
+        <span class="badge">Cervical Screening</span>
+        <span class="badge">Emergency Care</span>
+        <span class="badge">Oncology Referrals</span>
+      </div>
+      <div class="info-box">
+        <h4>Marie Stopes Kenya</h4>
+        <p><strong>Hours:</strong> Mon-Fri 8am–6pm<br><strong>Phone:</strong> +254 722 123 456<br><strong>Services:</strong></p>
+        <span class="badge">Pap Smears</span>
+        <span class="badge">Family Planning</span>
+        <span class="badge">Health Education</span>
+      </div>
+      <div class="info-box">
+        <h4>⚠️ Urgent Supplies Needed</h4>
+        <p>📦 HPV test kits<br>📦 Cryotherapy gas tanks<br>📦 VIA reagent packs</p>
+      </div>
+    </div>
+  </div>
+
+ 
+</body>
+</html>

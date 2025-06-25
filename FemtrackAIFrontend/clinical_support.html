@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Clinical Decision Cards - FemTrack AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fbeff5;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 80px;
+      background-color: #ffffff;
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: width 0.3s ease;
+      overflow-x: hidden;
+      z-index: 1000;
+    }
+
+    .sidebar:hover {
+      width: 220px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+      padding: 10px 0;
+      transition: all 0.3s ease;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo-text {
+      margin-left: 10px;
+      font-weight: bold;
+      color: #af2c72;
+      font-size: 18px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar:hover .logo-text {
+      opacity: 1;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    .sidebar ul li a {
+      display: flex;
+      align-items: center;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+    }
+
+    .sidebar ul li a:hover {
+      background-color: #ffe4f2;
+      color: #af2c72;
+    }
+
+    .icon {
+      min-width: 24px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .text {
+      opacity: 0;
+      white-space: nowrap;
+      transition: opacity 0.3s ease;
+    }
+
+    .sidebar:hover .text {
+      opacity: 1;
+    }
+
+    .topbar {
+  position: fixed;
+  top: 0;
+  left: 80px;
+  right: 0;
+  height: 60px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  box-shadow: 0 2px 5px rgba(234, 78, 177, 0.1);
+  z-index: 100;
+  transition: left 0.3s ease;
+}
+
+.sidebar:hover ~ .topbar {
+  left: 220px;
+}
+
+    .sidebar:hover ~ .topbar {
+      left: 220px;
+    }
+
+    .main-content {
+      margin-left: 80px;
+      margin-top: 60px;
+      padding: 40px 60px;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar:hover ~ .main-content {
+      margin-left: 220px;
+    }
+
+    .main-content h2 {
+      text-align: center;
+      color: #af2c72;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .decision-card {
+      background: #fff;
+      border-left: 6px solid #af2c72;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(175, 44, 114, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .decision-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(175, 44, 114, 0.2);
+    }
+
+    .decision-card h3 {
+      margin-top: 0;
+      color: #91205d;
+      font-size: 18px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .decision-card p {
+      color: #444;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background-color: #f9d1ea;
+      color: #8e2a75;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 14px;
+      background-color: #af2c72;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+      background-color: #8e245e;
+      transform: scale(1.03);
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      fill: #af2c72;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        padding: 20px;
+        margin-left: 0;
+      }
+
+      .topbar {
+        left: 0;
+      }
+
+      .sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+ <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo" class="logo-img" />
+      <span class="logo-text">FemTrack AI</span>
+    </div>
+    <ul>
+      <li><a href="dr_dashboard.html"><span class="icon">🏠</span> <span class="text">Dashboard</span></a></li>
+      <li><a href="patient_risks.html"><span class="icon">👥</span> <span class="text">Patient Risk</span></a></li>
+      <li><a href="clinical_support.html"><span class="icon">🧾</span> <span class="text">Decision Cards</span></a></li>
+      <li><a href="dr_action.html"><span class="icon">🧭</span> <span class="text">Action Items</span></a></li>
+      <li><a href="resource_map.html"><span class="icon">🗺</span> <span class="text">Resource Map</span></a></li>
+      <li><a href="dr_messages.html"><span class="icon">💬</span> <span class="text">Messages</span></a></li>
+      <li><a href="dr_settings.html"><span class="icon">⚙️</span> <span class="text">Settings</span></a></li>
+      <li><a href=""><span class="icon">🚪</span> <span class="text">Log Out</span></a></li>
+    </ul>
+  </div>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <h1>       🧾 Clinical Decision Cards
+    </h1>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+<div class="card-grid">
+  <div class="decision-card" style="border-left: 6px solid #c71585;">
+    <h3 style="color:#c71585">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+           d="M9 17v-2a4 4 0 014-4h6" /></svg>
+      Pap Smear Recommended
+    </h3>
+    <p>Patient: Mary K. — Age 32<br>Last test: 4+ years ago<br><strong>Action:</strong> Schedule cervical screening.</p>
+    <span class="tag">Screening</span>
+    <a href="#" class="btn">Schedule</a>
+  </div>
+
+  <div class="decision-card" style="background: #fff6f9; border-left: 6px dashed #ff4f84;">
+    <h3 style="color:#d63384">⚠️ Colposcopy Due</h3>
+    <p>Patient: Jane Doe<br>Status: Abnormal VIA<br>Recommendation: Colposcopy within 2 weeks.</p>
+    <span class="tag">Follow-Up</span>
+    <a href="#" class="btn" style="background-color:#d63384;">View</a>
+  </div>
+
+  <div class="decision-card" style="border-left: 6px solid #a0428f; background: #f8f1f9;">
+    <h3 style="color:#84216d">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 4h18M3 10h18M3 16h18"/>
+      </svg>
+      Order HPV DNA
+    </h3>
+    <p>Recommended for viral strain confirmation before treatment.</p>
+    <span class="tag">Lab Test</span>
+    <a href="#" class="btn" style="background-color:#84216d;">Order</a>
+  </div>
+
+  <div class="decision-card" style="background: linear-gradient(145deg, #ffe9f5, #ffffff); border-left: 6px solid #c95fa6;">
+    <h3 style="color:#a2266e">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 2L2 12h3v7h6v-5h2v5h6v-7h3z"/>
+      </svg>
+      Refer to Marie Stopes
+    </h3>
+    <p>Nearest same-day VIA service. Refer patient: Ann M.</p>
+    <span class="tag">Referral</span>
+    <a href="#" class="btn">Directions</a>
+  </div>
+
+  <div class="decision-card" style="border-left: 6px double #9c27b0; background: #faf5ff;">
+    <h3 style="color:#6a1b9a">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 4h16v16H4z"/>
+      </svg>
+      Inventory Alert
+    </h3>
+    <p>HPV test kits running low in Ward C. Restock needed by Friday.</p>
+    <span class="tag">Resource</span>
+    <a href="#" class="btn" style="background-color:#6a1b9a;">Notify</a>
+  </div>
+
+  <div class="decision-card" style="background: #fff3f8; border-left: 6px groove #b02674;">
+    <h3 style="color:#af2c72">
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M22 16.92V7.08a2 2 0 0 0-1-1.73L13 1.05a2 2 0 0 0-2 0L3 5.35a2 2 0 0 0-1 1.73v9.84a2 2 0 0 0 1 1.73l8 4.3a2 2 0 0 0 2 0l8-4.3a2 2 0 0 0 1-1.73z"/>
+      </svg>
+      Follow-up Call
+    </h3>
+    <p>Dr. Achieng to call patient @ 3:00PM about biopsy result.</p>
+    <span class="tag">Reminder</span>
+    <a href="#" class="btn">Mark Done</a>
+  </div>
+</div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FemTrack AI - Patient Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #f8bbd0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 10px 30px rgba(175, 44, 114, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      color: #af2c72;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      font-weight: 600;
+      color: #91205d;
+    }
+
+    input, select, textarea {
+      padding: 12px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .form-buttons button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      width: 48%;
+      margin-top: 10px;
+    }
+
+    .signup-btn {
+      background-color: #c71585;
+      color: white;
+    }
+
+    .login-btn {
+      background-color: #fff0f5;
+      color: #af2c72;
+      border: 2px solid #c71585;
+    }
+
+    .form-buttons button:hover {
+      opacity: 0.9;
+    }
+
+    .toggle-message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .toggle-message a {
+      color: #af2c72;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .section-heading {
+      margin-top: 25px;
+      font-size: 16px;
+      color: #c71585;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="form-container">
+    <h2>🩺 FemTrack AI - Patient Signup</h2>
+    <form id="signup-form">
+      <label>Full Name</label>
+      <input type="text" required>
+
+      <label>Age</label>
+      <input type="number" required>
+
+      <label>Location</label>
+      <input type="text" required>
+
+      <label>Email</label>
+        <input type="email" placeholder="you@example.com" required>
+
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+254 712 345678" required>
+
+        <label>Password</label>
+        <input type="password" required>
+
+
+      <div class="section-heading">🩻 Medical Info</div>
+
+      <label>Medical History</label>
+      <textarea placeholder="e.g. cervical screening, chronic illness..."></textarea>
+
+      <label>Do you have any disability?</label>
+      <input type="text" placeholder="e.g. physical, visual, hearing"/>
+
+      <label>Insurance Provider</label>
+      <input type="text" />
+
+      <label>Financial Stability</label>
+      <select>
+        <option value="">Select one</option>
+        <option value="stable">Stable</option>
+        <option value="unstable">Unstable</option>
+        <option value="needs-assistance">Needs Assistance</option>
+      </select>
+
+      <label>Do you have any known STDs?</label>
+      <input type="text" placeholder="e.g. HPV, HIV, Herpes"/>
+
+      <label>Are you on any medication?</label>
+      <textarea placeholder="List any medications you’re currently taking"></textarea>
+
+      <label>Menstrual History</label>
+      <textarea placeholder="e.g. regular/irregular, last period, pain level"></textarea>
+
+      <label>Previous Cervical Screening?</label>
+      <select>
+        <option value="">Select</option>
+        <option value="never">Never</option>
+        <option value="within-1-year">Within the last year</option>
+        <option value="over-1-year">Over a year ago</option>
+      </select>
+
+      <div class="form-buttons">
+        <button class="signup-btn" type="submit">Sign Up</button>
+        <button class="login-btn" type="button" onclick="toggleForm()">Already have an account? Login</button>
+      </div>
+    </form>
+
+    <form id="login-form" style="display:none;">
+      <label>Email</label>
+      <input type="email" required>
+
+      <label>Password</label>
+      <input type="password" required>
+
+      <div class="form-buttons">
+        <button class="login-btn" type="submit">Login</button>
+        <button class="signup-btn" type="button" onclick="toggleForm()">Back to Signup</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function toggleForm() {
+      const signupForm = document.getElementById('signup-form');
+      const loginForm = document.getElementById('login-form');
+      const heading = document.querySelector('h2');
+      if (signupForm.style.display === 'none') {
+        signupForm.style.display = 'block';
+        loginForm.style.display = 'none';
+        heading.textContent = "🩺 FemTrack AI - Patient Signup";
+      } else {
+        signupForm.style.display = 'none';
+        loginForm.style.display = 'block';
+        heading.textContent = " FemTrack AI - Patient Login";
+      }
+    }
+  </script>
+</body>
+</html>

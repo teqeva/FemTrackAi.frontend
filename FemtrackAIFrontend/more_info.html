@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FemTrack AI - Smarter Cervical Care</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styleindex.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff0f6;
+      color: #333;
+      text-align: center;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #ffccf9;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .logo-text span {
+      color: #c03aad;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .highlight-boxes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .highlight {
+      background: #ffe6fa;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 240px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .highlight span {
+      display: block;
+      font-weight: bold;
+      color: #aa2ea2;
+      margin-bottom: 0.5rem;
+    }
+
+    .quote {
+      font-style: italic;
+      font-size: 1.2rem;
+      margin: 3rem auto;
+      max-width: 700px;
+      color: #6b0e6b;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .btn {
+      background: #cc66cc;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #b347b3;
+    }
+
+    /* Our Story Section at the Bottom */
+    #our-story {
+      background-color: #fbe9f7;
+      padding: 3rem 1rem;
+      margin-top: 3rem;
+    }
+
+    #our-story h2 {
+      margin-bottom: 1rem;
+      color: #9b0a85;
+    }
+
+    #our-story p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    @media screen and (max-width: 600px) {
+      .highlight-boxes {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .highlight {
+        width: 90%;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo-section">
+      <img src="logo.jpg" alt="FemTrack AI Logo" class="logo-img" />
+      <span class="logo-text">FemTrack <span>AI</span></span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="about.html">About us</a></li>
+        <li><a href="#contact">Contact us</a></li>
+        <li class="auth-links">
+          <a href="login.html" target="_blank">Login</a>
+          <span>|</span>
+          <a href="signup.html" target="_blank">Sign Up</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+ 
+
+  <!-- Unique Value -->
+      <section class="section" id="about">
+      <h1>Why FemTrack AI Exists</h1>
+      <p>Millions of women around the world 🌍, especially in underserved regions, lack access to early cervical screening and organized follow-up care. This leads to late-stage diagnosis, avoidable deaths, and suffering that could be prevented.</p>
+      <p><strong>FemTrack AI</strong> bridges this gap with smart, affordable, and accessible technology that empowers both patients and doctors to act earlier and smarter.</p>
+    </section>
+
+    <!-- 🎯 Mission -->
+    <section class="section">
+      <h2>Our Mission</h2>
+      <p>To empower healthcare providers and women with AI-driven cervical cancer risk prediction, screening coordination, and accessible care—based on national guidelines and personal needs.</p>
+    </section>
+     <!-- What We Do -->
+  <section class="section">
+    <h2>What FemTrack AI Does</h2>
+    <div class="highlight-boxes">
+      <div class="highlight">
+        <span>📊 Risk Prediction</span>
+        Uses symptoms, age, history & more to calculate personal risk.
+      </div>
+      <div class="highlight">
+        <span>🗓 Personalized Screening</span>
+        Generates smart screening schedules based on medical guidelines.
+      </div>
+      <div class="highlight">
+        <span>🩺 Doctor Dashboard</span>
+        Doctors can track, follow up, and assist patients from anywhere.
+      </div>
+      <div class="highlight">
+        <span>💊 Medical Inventory</span>
+        Tracks local tools & test kits availability (coming soon).
+      </div>
+      <div class="highlight">
+        <span>💰 Financing Support</span>
+        Helps estimate costs and link users to potential support options.
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <h2>What Makes FemTrack Unique</h2>
+    <p>We don’t just predict risk. We personalize care, connect patients to doctors in real-time, guide next steps, and empower action. Our system brings together health data, medical insight, and care access — in one unified platform.</p>
+  </section>
+
+  <!-- Quote -->
+  <div class="quote">
+    “Early detection saves lives. With FemTrack AI, we make smart screening a daily reality — not a distant dream.”
+  </div>
+
+
+
+  <!-- Our Story Section -->
+  <section id="our-story">
+    <h2>Our Story</h2>
+    <p>
+      FemTrack AI was born out of a mission to close the cervical health gap in under-resourced communities. With the power of artificial intelligence and a human-centered approach, we aim to empower every woman with the tools, knowledge, and access she deserves.
+    </p>
+  </section>
+
+</body>
+</html>
