@@ -7,10 +7,13 @@ ZiwaAfya is a digital health platform designed to improve access to care for wom
 ## 👥 Contributors
 
 - Eva Muthoni— Project Lead & Backend Architect  
-  📧 eva@ziwaafya.org
+  📧 evaamuthoni@gmail.com
 
 - Sharon Wanjiru — Deployment & API Integration  
-  📧 brian.otieno@ziwaafya.org
+  📧 snwanjiru03@gmail.com
+
+- Ellen Sirleaf- Frontend
+- 📧 oderosirleaf11@gmail.com
 
 ---
 
